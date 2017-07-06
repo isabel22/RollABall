@@ -11,13 +11,9 @@ public class ClickController : MonoBehaviour {
 	void Start () {
 		reload = GameObject.Find("Reload").GetComponent<UnityEngine.UI.Button>();
 		disableButton();
-		
 	}
 	
 	// Update is called once per frame
-	public void Click1 () {
-		restart ();
-	}
 
 	void disableButton() 
 	{
