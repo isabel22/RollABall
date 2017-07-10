@@ -78,4 +78,38 @@ public class PlayerController : MonoBehaviour {
 			collinder.gameObject.tag = "Pick Up";
 		}
 	}
+
+	public void move(string position){
+
+		float moveHorizontal;
+		float moveVertical;
+
+		if (Input.mousePresent) {
+			moveHorizontal = Input.GetAxis ("Horizontal");
+			moveVertical = Input.GetAxis ("Vertical");
+		} else {
+			moveHorizontal = -Input.acceleration.y;
+			moveVertical = Input.acceleration.x;
+		}
+
+		switch (position) {
+			case "up":
+				moveVertical += 1.0f;
+				break;
+			case "right":
+				moveHorizontal += 1.0f;
+				break;
+			case "left":
+				moveHorizontal += -1.0f;
+				break;
+			case "down":
+				moveVertical += -1.0f;
+				break;
+			default:
+				break;
+		}
+
+		Vector3 movedir = new Vector3(moveHorizontal,0, moveVertical);  
+		rb.AddForce (movedir*speed);  
+	}
 }
